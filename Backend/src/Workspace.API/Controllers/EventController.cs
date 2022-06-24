@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Workspace.API.Data;
 using Workspace.API.Models;
 
 namespace Workspace.API.Controllers
@@ -8,23 +11,23 @@ namespace Workspace.API.Controllers
     [Route("api/[controller]")]
     public class EventController : ControllerBase
     {
-        public EventController()
+        private readonly DataContext _context;
+
+        public EventController(DataContext context)
         {
+            _context = context;
         }
 
         [HttpGet]
-        public Event Get()
+        public IEnumerable<Event> Get()
         {
-            return new Event
-            {
-                EventId = 1,
-                Title = "Event Request",
-                Local = "City",
-                Batch = "Event 1",
-                Quantity = 1,
-                Date = DateTime.Now.ToString(),
-                ImageURL = "image.png"
-            };
+            return _context.Events;
+        }
+
+        [HttpGet("{id}")]
+        public Event Get(int id)
+        {
+            return _context.Events.FirstOrDefault(myEvent => myEvent.EventId == id);
         }
 
         [HttpPost]
