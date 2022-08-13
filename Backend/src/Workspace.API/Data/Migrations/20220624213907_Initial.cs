@@ -10,8 +10,9 @@ namespace Workspace.API.Data.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    EventId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    SharedKey = table.Column<System.Guid>(type: "TEXT", nullable: false),
                     Local = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<string>(type: "TEXT", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: true),
@@ -21,7 +22,7 @@ namespace Workspace.API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.EventId);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
         }
 

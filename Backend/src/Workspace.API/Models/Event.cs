@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Workspace.API.Models
 {
-    public class Event
+    public class Event : AbstractModel
     {
-        public int EventId { get; set; }
         public string Local { get; set; }
         public string Date { get; set; }
         public string Title { get; set; }

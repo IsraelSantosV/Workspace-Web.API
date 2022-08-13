@@ -19,9 +19,12 @@ namespace Workspace.API.Data.Migrations
 
             modelBuilder.Entity("Workspace.API.Models.Event", b =>
                 {
-                    b.Property<int>("EventId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<System.Guid>("SharedKey")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Batch")
                         .HasColumnType("TEXT");
