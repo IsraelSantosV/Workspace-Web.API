@@ -1,0 +1,39 @@
+<h2>Eventos</h2><hr>
+
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="Digite algo..." [(ngModel)]="listFilter">
+    <button class="btn btn-outline-success">Buscar</button>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Título</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Quantidade</th>
+      <th>Lote</th>
+      <th>Imagem</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="filteredEvents && filteredEvents.length">
+    <tr *ngFor="let event of filteredEvents">
+      <td>{{event.id}}</td>
+      <td>{{event.title}}</td>
+      <td>{{event.local}}</td>
+      <td>{{event.date}}</td>
+      <td>{{event.quantity}}</td>
+      <td>{{event.batch}}</td>
+      <td>{{event.imageURL}}</td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!filteredEvents || !filteredEvents.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum evento encontrado.</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>

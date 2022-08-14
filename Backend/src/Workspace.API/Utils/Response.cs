@@ -9,6 +9,8 @@ namespace Workspace.API.Utils
     {
         public List<T> Data { get; private set; }
         public HttpStatusCode HTTPCode { get; private set; }
+        
+        public string Error { get; set; }
 
         public Response(List<T> data, HttpStatusCode httpCode)
         {
